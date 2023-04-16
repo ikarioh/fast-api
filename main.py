@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import numpy as np
+import uvicorn
 
 
 import pickle
@@ -101,6 +102,9 @@ async def predict(request: Sentence):
     # Return the prediction
     return {"tags": results}
 
+
+if __name__ == '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
 
 
 # uvicorn main:app --reload
