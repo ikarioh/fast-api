@@ -27,14 +27,14 @@ class Sentence(BaseModel):
     question: str
 
 # Load the model
-loaded_module = tf.saved_model.load('./use')
+'''loaded_module = tf.saved_model.load('./use')
 loaded_embed = loaded_module.signatures['serving_default']
 
 with open('use_scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
 with open('use_xgboost_model.pkl', 'rb') as f:
-    xgb_clf = pickle.load(f)
+    xgb_clf = pickle.load(f)'''
 
 with open('lda_id2word.pkl', 'rb') as f:
     id2word = pickle.load(f)
@@ -75,7 +75,7 @@ async def propose(request: Sentence):
 
     return {number: [w[0] for w in words] for number, words in topics[1].items()}
 
-@app.post("/Tags_prediction")
+'''@app.post("/Tags_prediction")
 async def predict(request: Sentence):
 
     tab = ['javascript', 'java', 'c#', 'python', 'php', 'android', 'c++', 'html', 'jquery', 'css']
@@ -100,7 +100,7 @@ async def predict(request: Sentence):
     #y_pred = [tab[i] for i in index]
 
     # Return the prediction
-    return {"tags": results}
+    return {"tags": results}'''
 
 
 if __name__ == '__main__':
